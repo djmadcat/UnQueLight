@@ -33,7 +33,7 @@
 
 
 __attribute__((constructor))
-static void initialize_navigationBarImages()
+static void UQLLogInitialize()
 {
     UQLLogConfigureByName("UnQueLight*", UQLLogLevelDefault);
     UQLLogInfo(@"UnQueLight logging initialized...");
