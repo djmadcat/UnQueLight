@@ -120,6 +120,9 @@
 
 	if (status == UNQLITE_OK) {
 		UQLLogTrace(@"Successful closed database \"%@\"", self.path);
+
+		_db = NULL;
+
 		return YES;
 	}
 
