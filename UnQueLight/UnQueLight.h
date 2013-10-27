@@ -10,3 +10,4 @@
 #import "UQLError.h"
 
 #import "UQLDatabase.h"
+#import "UQLDatabase+Configuration.h"
