@@ -68,6 +68,10 @@
 
 - (BOOL)openWithOptions:(UQLOpenOptions)options error:(NSError **)error
 {
+	if (_db) {
+		return YES;
+	}
+
 	UQLLogTrace(@"Trying to open database \"%@\"", self.path);
 
 	const char *path = [self unqlitePath];
