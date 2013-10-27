@@ -9,5 +9,7 @@
 
 #import "UQLError.h"
 
+#import "UQLLibrary.h"
+
 #import "UQLDatabase.h"
 #import "UQLDatabase+Configuration.h"

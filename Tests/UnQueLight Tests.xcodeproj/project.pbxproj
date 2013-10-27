@@ -18,6 +18,8 @@
 		2725141C181D25BE00FB2E7D /* UQLTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725141A181D25BE00FB2E7D /* UQLTestCase.m */; };
 		2725141F181D4C2A00FB2E7D /* UQLDatabase+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725141E181D4C2A00FB2E7D /* UQLDatabase+Configuration.m */; };
 		27251420181D4C2A00FB2E7D /* UQLDatabase+Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725141E181D4C2A00FB2E7D /* UQLDatabase+Configuration.m */; };
+		27251423181D5A6100FB2E7D /* UQLLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251422181D5A6100FB2E7D /* UQLLibrary.m */; };
+		27251424181D5A6100FB2E7D /* UQLLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251422181D5A6100FB2E7D /* UQLLibrary.m */; };
 		27251463181D763000FB2E7D /* UQLLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725145E181D763000FB2E7D /* UQLLog.m */; };
 		27251464181D763000FB2E7D /* UQLLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725145E181D763000FB2E7D /* UQLLog.m */; };
 		27251471181D76A600FB2E7D /* lcl_UQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725146A181D76A600FB2E7D /* lcl_UQL.m */; };
@@ -45,6 +47,8 @@
 		2725141A181D25BE00FB2E7D /* UQLTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UQLTestCase.m; sourceTree = "<group>"; };
 		2725141D181D4C2A00FB2E7D /* UQLDatabase+Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UQLDatabase+Configuration.h"; sourceTree = "<group>"; };
 		2725141E181D4C2A00FB2E7D /* UQLDatabase+Configuration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UQLDatabase+Configuration.m"; sourceTree = "<group>"; };
+		27251421181D5A6100FB2E7D /* UQLLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UQLLibrary.h; sourceTree = "<group>"; };
+		27251422181D5A6100FB2E7D /* UQLLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UQLLibrary.m; sourceTree = "<group>"; };
 		2725145E181D763000FB2E7D /* UQLLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UQLLog.m; sourceTree = "<group>"; };
 		2725145F181D763000FB2E7D /* UQLLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UQLLog.h; sourceTree = "<group>"; };
 		27251460181D763000FB2E7D /* lcl_config_components_UQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcl_config_components_UQL.h; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				27251418181C69E200FB2E7D /* UnQueLight.h */,
+				27251421181D5A6100FB2E7D /* UQLLibrary.h */,
+				27251422181D5A6100FB2E7D /* UQLLibrary.m */,
 				2725140C181C612E00FB2E7D /* UQLDatabase.h */,
 				2725140D181C612E00FB2E7D /* UQLDatabase.m */,
 				2725141D181D4C2A00FB2E7D /* UQLDatabase+Configuration.h */,
@@ -402,6 +408,7 @@
 				27251463181D763000FB2E7D /* UQLLog.m in Sources */,
 				27251416181C637B00FB2E7D /* UQLDatabaseTests.m in Sources */,
 				2725140E181C612E00FB2E7D /* UQLDatabase.m in Sources */,
+				27251423181D5A6100FB2E7D /* UQLLibrary.m in Sources */,
 				2725141F181D4C2A00FB2E7D /* UQLDatabase+Configuration.m in Sources */,
 				27251473181D76A600FB2E7D /* LCLNSLog_UQL.m in Sources */,
 				2725141B181D25BE00FB2E7D /* UQLTestCase.m in Sources */,
@@ -417,6 +424,7 @@
 				27251464181D763000FB2E7D /* UQLLog.m in Sources */,
 				27251417181C637B00FB2E7D /* UQLDatabaseTests.m in Sources */,
 				2725140F181C612E00FB2E7D /* UQLDatabase.m in Sources */,
+				27251424181D5A6100FB2E7D /* UQLLibrary.m in Sources */,
 				27251420181D4C2A00FB2E7D /* UQLDatabase+Configuration.m in Sources */,
 				27251474181D76A600FB2E7D /* LCLNSLog_UQL.m in Sources */,
 				2725141C181D25BE00FB2E7D /* UQLTestCase.m in Sources */,
