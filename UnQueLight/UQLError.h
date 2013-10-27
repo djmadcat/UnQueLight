@@ -13,4 +13,6 @@
 extern NSString *const UQLErrorDomain;
 
 
+// Not all API methods defines their status codes.
+// This method check status code and create (or not if UNQLITE_OK) NSError with common description for status code.
 extern NSError *UQLErrorForStatusCode(NSInteger statusCode);
