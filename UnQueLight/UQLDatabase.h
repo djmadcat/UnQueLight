@@ -43,6 +43,8 @@ typedef NS_OPTIONS(NSUInteger, UQLOpenOptions) {
 - (BOOL)openWithOptions:(UQLOpenOptions)options error:(NSError **)error;
 - (BOOL)close;
 
+- (BOOL)isOpen;
+
 // low-level handle
 - (unqlite *)unqliteHandle;
 - (const char *)unqlitePath;

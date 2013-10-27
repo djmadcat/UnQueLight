@@ -133,6 +133,12 @@
 	return status == UNQLITE_OK;
 }
 
+- (BOOL)isOpen
+{
+	BOOL result = _db != NULL;
+	return result;
+}
+
 //int unqlite_begin(unqlite *pDb);
 //int unqlite_commit(unqlite *pDb);
 //int unqlite_rollback(unqlite *pDb);
