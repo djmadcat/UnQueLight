@@ -7,11 +7,10 @@
 //
 
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "UQLLog.h"
+#import "UQLTestCase.h"
 
 
-@interface UQLDatabaseTests : SenTestCase
+@interface UQLDatabaseTests : UQLTestCase
 
 @end
 

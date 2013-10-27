@@ -14,6 +14,8 @@
 		27251414181C617E00FB2E7D /* UQLError.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251411181C617E00FB2E7D /* UQLError.m */; };
 		27251416181C637B00FB2E7D /* UQLDatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251415181C637B00FB2E7D /* UQLDatabaseTests.m */; };
 		27251417181C637B00FB2E7D /* UQLDatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251415181C637B00FB2E7D /* UQLDatabaseTests.m */; };
+		2725141B181D25BE00FB2E7D /* UQLTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725141A181D25BE00FB2E7D /* UQLTestCase.m */; };
+		2725141C181D25BE00FB2E7D /* UQLTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725141A181D25BE00FB2E7D /* UQLTestCase.m */; };
 		27D0ACB7181C4DB600BAFF55 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D0ACB6181C4DB600BAFF55 /* SenTestingKit.framework */; };
 		27D0ACB8181C4DB600BAFF55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D0AC82181C4D7200BAFF55 /* Foundation.framework */; };
 		27D0ACBF181C4DB600BAFF55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27D0ACBD181C4DB600BAFF55 /* InfoPlist.strings */; };
@@ -32,6 +34,8 @@
 		27251412181C617E00FB2E7D /* UQLLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UQLLog.h; sourceTree = "<group>"; };
 		27251415181C637B00FB2E7D /* UQLDatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UQLDatabaseTests.m; sourceTree = "<group>"; };
 		27251418181C69E200FB2E7D /* UnQueLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnQueLight.h; sourceTree = "<group>"; };
+		27251419181D25BE00FB2E7D /* UQLTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UQLTestCase.h; sourceTree = "<group>"; };
+		2725141A181D25BE00FB2E7D /* UQLTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UQLTestCase.m; sourceTree = "<group>"; };
 		27D0AC82181C4D7200BAFF55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27D0AC84181C4D7200BAFF55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		27D0AC9B181C4D7200BAFF55 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -76,6 +80,8 @@
 		2725140A181C4E5F00FB2E7D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				27251419181D25BE00FB2E7D /* UQLTestCase.h */,
+				2725141A181D25BE00FB2E7D /* UQLTestCase.m */,
 				27251415181C637B00FB2E7D /* UQLDatabaseTests.m */,
 			);
 			path = Tests;
@@ -325,6 +331,7 @@
 			files = (
 				27251416181C637B00FB2E7D /* UQLDatabaseTests.m in Sources */,
 				2725140E181C612E00FB2E7D /* UQLDatabase.m in Sources */,
+				2725141B181D25BE00FB2E7D /* UQLTestCase.m in Sources */,
 				27251413181C617E00FB2E7D /* UQLError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +342,7 @@
 			files = (
 				27251417181C637B00FB2E7D /* UQLDatabaseTests.m in Sources */,
 				2725140F181C612E00FB2E7D /* UQLDatabase.m in Sources */,
+				2725141C181D25BE00FB2E7D /* UQLTestCase.m in Sources */,
 				27251414181C617E00FB2E7D /* UQLError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
