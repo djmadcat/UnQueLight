@@ -25,7 +25,7 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 - (id)configForKey:(NSString *)key
 {
 	if (!_db) {
-		UQLLogDebug(@"Can not get configuration for NULL database", nil);
+		UQLLogDebug(@"Can not get configuration for NULL database");
 		return nil;
 	}
 
@@ -66,13 +66,13 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 - (void)setConfig:(id)config forKey:(NSString *)key
 {
 	if (!_db) {
-		UQLLogDebug(@"Can not set configuration for NULL database", nil);
+		UQLLogDebug(@"Can not set configuration for NULL database");
 		return;
 	}
 
 	if ([key isEqualToString:UQLConfigKeyValueStorageEngineKey]) {
 		//UNQLITE_CONFIG_KV_ENGINE
-		UQLLogDebug(@"Switch to another Key/Value storage engine is unimplemented yet", nil);
+		UQLLogDebug(@"Switch to another Key/Value storage engine is unimplemented yet");
 	}
 	if ([key isEqualToString:UQLConfigDisableAutoCommitKey]) {
 		int status = unqlite_config(_db, UNQLITE_CONFIG_DISABLE_AUTO_COMMIT);
