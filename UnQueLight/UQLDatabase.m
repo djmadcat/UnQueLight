@@ -139,10 +139,6 @@
 	return result;
 }
 
-//int unqlite_begin(unqlite *pDb);
-//int unqlite_commit(unqlite *pDb);
-//int unqlite_rollback(unqlite *pDb);
-
 #pragma mark -
 #pragma mark Low-level methods
 
