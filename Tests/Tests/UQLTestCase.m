@@ -8,9 +8,17 @@
 
 
 #import "UQLTestCase.h"
+#import "UQLLog.h"
 
 
 @implementation UQLTestCase
+
+- (void)setUp
+{
+	[super setUp];
+
+	UQLLogConfigureByName("UnQueLight*", UQLLogLevelTrace);
+}
 
 - (NSString *)tempDatabasePathForFileName:(NSString *)fileName
 {
