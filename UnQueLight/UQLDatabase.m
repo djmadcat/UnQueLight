@@ -89,11 +89,11 @@
 
 - (BOOL)close
 {
-	UQLLogTrace(@"Trying to close database \"%@\"", self.path);
-
 	if (!_db) {
 		return YES;
 	}
+
+	UQLLogTrace(@"Trying to close database \"%@\"", self.path);
 
 	int status = unqlite_close(_db);
 	while (status == UNQLITE_BUSY) {
