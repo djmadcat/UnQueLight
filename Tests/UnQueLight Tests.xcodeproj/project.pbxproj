@@ -26,8 +26,12 @@
 		27251472181D76A600FB2E7D /* lcl_UQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725146A181D76A600FB2E7D /* lcl_UQL.m */; };
 		27251473181D76A600FB2E7D /* LCLNSLog_UQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725146D181D76A600FB2E7D /* LCLNSLog_UQL.m */; };
 		27251474181D76A600FB2E7D /* LCLNSLog_UQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2725146D181D76A600FB2E7D /* LCLNSLog_UQL.m */; };
+		27251479181D90B700FB2E7D /* UQLDatabase+KeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251478181D90B700FB2E7D /* UQLDatabase+KeyValueStore.m */; };
+		2725147A181D90B700FB2E7D /* UQLDatabase+KeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251478181D90B700FB2E7D /* UQLDatabase+KeyValueStore.m */; };
 		2725148A181D955200FB2E7D /* UQLException.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251489181D955200FB2E7D /* UQLException.m */; };
 		2725148B181D955200FB2E7D /* UQLException.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251489181D955200FB2E7D /* UQLException.m */; };
+		27251493181DB45900FB2E7D /* UQLKeyValueStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251492181DB45900FB2E7D /* UQLKeyValueStoreTests.m */; };
+		27251494181DB45900FB2E7D /* UQLKeyValueStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27251492181DB45900FB2E7D /* UQLKeyValueStoreTests.m */; };
 		27D0ACB7181C4DB600BAFF55 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D0ACB6181C4DB600BAFF55 /* SenTestingKit.framework */; };
 		27D0ACB8181C4DB600BAFF55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D0AC82181C4D7200BAFF55 /* Foundation.framework */; };
 		27D0ACBF181C4DB600BAFF55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27D0ACBD181C4DB600BAFF55 /* InfoPlist.strings */; };
@@ -60,8 +64,11 @@
 		2725146A181D76A600FB2E7D /* lcl_UQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lcl_UQL.m; sourceTree = "<group>"; };
 		2725146C181D76A600FB2E7D /* LCLNSLog_UQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCLNSLog_UQL.h; sourceTree = "<group>"; };
 		2725146D181D76A600FB2E7D /* LCLNSLog_UQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCLNSLog_UQL.m; sourceTree = "<group>"; };
+		27251477181D90B700FB2E7D /* UQLDatabase+KeyValueStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UQLDatabase+KeyValueStore.h"; sourceTree = "<group>"; };
+		27251478181D90B700FB2E7D /* UQLDatabase+KeyValueStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UQLDatabase+KeyValueStore.m"; sourceTree = "<group>"; };
 		27251488181D955200FB2E7D /* UQLException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UQLException.h; sourceTree = "<group>"; };
 		27251489181D955200FB2E7D /* UQLException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UQLException.m; sourceTree = "<group>"; };
+		27251492181DB45900FB2E7D /* UQLKeyValueStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UQLKeyValueStoreTests.m; sourceTree = "<group>"; };
 		27D0AC82181C4D7200BAFF55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27D0AC84181C4D7200BAFF55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		27D0AC9B181C4D7200BAFF55 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -109,6 +116,7 @@
 				27251419181D25BE00FB2E7D /* UQLTestCase.h */,
 				2725141A181D25BE00FB2E7D /* UQLTestCase.m */,
 				27251415181C637B00FB2E7D /* UQLDatabaseTests.m */,
+				27251492181DB45900FB2E7D /* UQLKeyValueStoreTests.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -123,6 +131,8 @@
 				2725140D181C612E00FB2E7D /* UQLDatabase.m */,
 				2725141D181D4C2A00FB2E7D /* UQLDatabase+Configuration.h */,
 				2725141E181D4C2A00FB2E7D /* UQLDatabase+Configuration.m */,
+				27251477181D90B700FB2E7D /* UQLDatabase+KeyValueStore.h */,
+				27251478181D90B700FB2E7D /* UQLDatabase+KeyValueStore.m */,
 				27251410181C617E00FB2E7D /* UQLError.h */,
 				27251411181C617E00FB2E7D /* UQLError.m */,
 				27251488181D955200FB2E7D /* UQLException.h */,
@@ -417,8 +427,10 @@
 				27251423181D5A6100FB2E7D /* UQLLibrary.m in Sources */,
 				2725141F181D4C2A00FB2E7D /* UQLDatabase+Configuration.m in Sources */,
 				27251473181D76A600FB2E7D /* LCLNSLog_UQL.m in Sources */,
+				27251479181D90B700FB2E7D /* UQLDatabase+KeyValueStore.m in Sources */,
 				2725141B181D25BE00FB2E7D /* UQLTestCase.m in Sources */,
 				2725148A181D955200FB2E7D /* UQLException.m in Sources */,
+				27251493181DB45900FB2E7D /* UQLKeyValueStoreTests.m in Sources */,
 				27251413181C617E00FB2E7D /* UQLError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,8 +446,10 @@
 				27251424181D5A6100FB2E7D /* UQLLibrary.m in Sources */,
 				27251420181D4C2A00FB2E7D /* UQLDatabase+Configuration.m in Sources */,
 				27251474181D76A600FB2E7D /* LCLNSLog_UQL.m in Sources */,
+				2725147A181D90B700FB2E7D /* UQLDatabase+KeyValueStore.m in Sources */,
 				2725141C181D25BE00FB2E7D /* UQLTestCase.m in Sources */,
 				2725148B181D955200FB2E7D /* UQLException.m in Sources */,
+				27251494181DB45900FB2E7D /* UQLKeyValueStoreTests.m in Sources */,
 				27251414181C617E00FB2E7D /* UQLError.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
