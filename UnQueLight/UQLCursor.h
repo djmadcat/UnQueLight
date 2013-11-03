@@ -13,9 +13,9 @@
 
 
 typedef NS_ENUM(NSUInteger, UQLCursorSeekMatch) {
-	UQLCursorSeekMatchExact				= UNQLITE_CURSOR_MATCH_EXACT,
-	UQLCursorSeekMatchLessOrEqual		= UNQLITE_CURSOR_MATCH_LE,
-	UQLCursorSeekMatchGreaterOrEqual	= UNQLITE_CURSOR_MATCH_GE
+	UQLCursorSeekMatchExact             = UNQLITE_CURSOR_MATCH_EXACT,
+	UQLCursorSeekMatchLessOrEqual       = UNQLITE_CURSOR_MATCH_LE,
+	UQLCursorSeekMatchGreaterOrEqual    = UNQLITE_CURSOR_MATCH_GE
 };
 
 
