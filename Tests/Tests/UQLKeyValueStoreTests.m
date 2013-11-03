@@ -29,7 +29,7 @@
 
 - (void)testStoreFetchValue
 {
-	NSData *key = [@"test key" dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *key = [@"test store key" dataUsingEncoding:NSUTF8StringEncoding];
 	NSData *value = [@"test value" dataUsingEncoding:NSUTF8StringEncoding];
 	
 	[self.database storeData:value forRawKey:key];
@@ -40,7 +40,7 @@
 
 - (void)testAppendValue
 {
-	NSData *key = [@"test key" dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *key = [@"test append key" dataUsingEncoding:NSUTF8StringEncoding];
 	NSData *value1 = [@"test value1" dataUsingEncoding:NSUTF8StringEncoding];
 	NSData *value2 = [@" value2" dataUsingEncoding:NSUTF8StringEncoding];
 	NSMutableData *value = [NSMutableData dataWithData:value1];
@@ -59,7 +59,7 @@
 
 - (void)testDeleteValue
 {
-	NSData *key = [@"test key" dataUsingEncoding:NSUTF8StringEncoding];
+	NSData *key = [@"test delete key" dataUsingEncoding:NSUTF8StringEncoding];
 	NSData *value = [@"test value" dataUsingEncoding:NSUTF8StringEncoding];
 
 	[self.database storeData:value forRawKey:key];
