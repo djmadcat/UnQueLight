@@ -85,6 +85,23 @@
 	return result;
 }
 
+static int fetchCallback(const void *pData, unsigned int iDataLen, void *pUserData)
+{
+	UQLDataCallback block = (__bridge UQLDataCallback)pUserData;
+
+	NSData *data = [[NSData alloc] initWithBytesNoCopy:(void *)pData length:iDataLen freeWhenDone:NO];
+	BOOL success = block(data);
+
+	return success ? UNQLITE_OK : UNQLITE_ABORT;
+}
+
+- (void)dataForRawKey:(NSData *)key callback:(UQLDataCallback)callback
+{
+	void *block = Block_copy((__bridge void *)callback);
+	unqlite_kv_fetch_callback(_db, [key bytes], (int)[key length], fetchCallback, block);
+	Block_release(block);
+}
+
 - (void)storeData:(NSData *)data forRawKey:(NSData *)key
 {
 	NSAssert(key != nil, @"Attempt to store nil key");

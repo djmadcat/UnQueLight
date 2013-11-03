@@ -71,4 +71,18 @@
 	STAssertNil(nilData, @"Fetched removed value for key");
 }
 
+- (void)testFetchValueCallback
+{
+	NSData *key = [@"test fetch callback key" dataUsingEncoding:NSUTF8StringEncoding];
+	NSMutableData *value = [[NSMutableData alloc] initWithLength:1024 * 1024 * 10];
+	NSMutableData *data = [[NSMutableData alloc] init];
+
+	[self.database storeData:value forRawKey:key];
+	[self.database dataForRawKey:key callback:^BOOL(NSData *chunk) {
+		[data appendData:chunk];
+		return YES;
+	}];
+	STAssertTrue([data isEqualToData:value], @"Fetched data is not equals to stored");
+}
+
 @end
