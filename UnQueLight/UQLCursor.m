@@ -149,6 +149,16 @@
 #pragma mark -
 #pragma mark Extracting data
 
+static int fetchCallback(const void *pData, unsigned int iDataLen, void *pUserData)
+{
+	UQLDataCallback block = (__bridge UQLDataCallback)pUserData;
+
+	NSData *data = [[NSData alloc] initWithBytesNoCopy:(void *)pData length:iDataLen freeWhenDone:NO];
+	BOOL success = block(data);
+
+	return success ? UNQLITE_OK : UNQLITE_ABORT;
+}
+
 - (NSData *)rawKey
 {
 	int size = 0;
@@ -165,6 +175,13 @@
 	return result;
 }
 
+- (void)rawKeyWithCallback:(UQLDataCallback)callback
+{
+	void *block = Block_copy((__bridge void *)callback);
+	unqlite_kv_cursor_key_callback(_cursor, fetchCallback, block);
+	Block_release(block);
+}
+
 - (NSData *)rawValue
 {
 	unqlite_int64 size = 0;
@@ -179,6 +196,13 @@
 	}
 
 	return result;
+}
+
+- (void)rawValueWithCallback:(UQLDataCallback)callback
+{
+	void *block = Block_copy((__bridge void *)callback);
+	unqlite_kv_cursor_data_callback(_cursor, fetchCallback, block);
+	Block_release(block);
 }
 
 #pragma mark -

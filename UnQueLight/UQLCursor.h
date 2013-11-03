@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #include "unqlite.h"
-#import "UQLDatabase.h"
+#import "UQLDatabase+KeyValueStore.h"
 
 
 typedef NS_ENUM(NSUInteger, UQLCursorSeekMatch) {
@@ -42,7 +42,9 @@ typedef NS_ENUM(NSUInteger, UQLCursorSeekMatch) {
 - (BOOL)remove;
 
 - (NSData *)rawKey;
+- (void)rawKeyWithCallback:(UQLDataCallback)callback;
 - (NSData *)rawValue;
+- (void)rawValueWithCallback:(UQLDataCallback)callback;
 
 // low-level handle
 - (unqlite_kv_cursor *)unqliteHandle;
