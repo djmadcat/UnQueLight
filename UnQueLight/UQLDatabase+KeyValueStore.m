@@ -25,7 +25,7 @@
 		UQLLogTrace(@"Null key provided for value fetching in database \"%@\"", self.path);
 		return nil;
 	}
-	if (!_db) {
+	if (!_handle) {
 		UQLLogDebug(@"Can not get value from NULL database");
 		return nil;
 	}
@@ -33,7 +33,7 @@
 	UQLLogTrace(@"Trying to fetch value in database \"%@\"", self.path);
 
 	unqlite_int64 size = 0;
-	int status = unqlite_kv_fetch(_db, [key bytes], (int)[key length], NULL, &size);
+	int status = unqlite_kv_fetch(_handle, [key bytes], (int)[key length], NULL, &size);
 	if (status == UNQLITE_NOTFOUND) {
 		return nil;
 	}
@@ -46,7 +46,7 @@
 	}
 	while (status == UNQLITE_BUSY) {
 		[NSThread sleepForTimeInterval:20];
-		status = unqlite_kv_fetch(_db, [key bytes], (int)[key length], NULL, &size);
+		status = unqlite_kv_fetch(_handle, [key bytes], (int)[key length], NULL, &size);
 	}
 	if (status != UNQLITE_OK) {
 		NSError *fetchError = UQLErrorForStatusCode(status);
@@ -58,7 +58,7 @@
 	}
 
 	NSMutableData *result = [NSMutableData dataWithLength:(NSUInteger)size];
-	status = unqlite_kv_fetch(_db, [key bytes], (int)[key length], [result mutableBytes], &size);
+	status = unqlite_kv_fetch(_handle, [key bytes], (int)[key length], [result mutableBytes], &size);
 	if (status == UNQLITE_NOTFOUND) {
 		return nil;
 	}
@@ -71,7 +71,7 @@
 	}
 	while (status == UNQLITE_BUSY) {
 		[NSThread sleepForTimeInterval:20];
-		status = unqlite_kv_fetch(_db, [key bytes], (int)[key length], [result mutableBytes], &size);
+		status = unqlite_kv_fetch(_handle, [key bytes], (int)[key length], [result mutableBytes], &size);
 	}
 	if (status != UNQLITE_OK) {
 		NSError *fetchError = UQLErrorForStatusCode(status);
@@ -98,7 +98,7 @@ static int fetchCallback(const void *pData, unsigned int iDataLen, void *pUserDa
 - (void)dataForRawKey:(NSData *)key callback:(UQLDataCallback)callback
 {
 	void *block = Block_copy((__bridge void *)callback);
-	unqlite_kv_fetch_callback(_db, [key bytes], (int)[key length], fetchCallback, block);
+	unqlite_kv_fetch_callback(_handle, [key bytes], (int)[key length], fetchCallback, block);
 	Block_release(block);
 }
 
@@ -107,17 +107,17 @@ static int fetchCallback(const void *pData, unsigned int iDataLen, void *pUserDa
 	NSAssert(key != nil, @"Attempt to store nil key");
 	NSAssert(data != nil, @"Attempt to store nil value");
 
-	if (!_db) {
+	if (!_handle) {
 		UQLLogDebug(@"Can not store value in NULL database");
 		return;
 	}
 
 	UQLLogTrace(@"Trying to store value in database \"%@\"", self.path);
 
-	int status = unqlite_kv_store(_db, [key bytes], (int)[key length], [data bytes], [data length]);
+	int status = unqlite_kv_store(_handle, [key bytes], (int)[key length], [data bytes], [data length]);
 	while (status == UNQLITE_BUSY) {
 		[NSThread sleepForTimeInterval:20];
-		status = unqlite_kv_store(_db, [key bytes], (int)[key length], [data bytes], [data length]);
+		status = unqlite_kv_store(_handle, [key bytes], (int)[key length], [data bytes], [data length]);
 	}
 
 	if (status == UNQLITE_READ_ONLY) {
@@ -153,17 +153,17 @@ static int fetchCallback(const void *pData, unsigned int iDataLen, void *pUserDa
 	NSAssert(key != nil, @"Attempt to append nil key");
 	NSAssert(data != nil, @"Attempt to append nil value");
 
-	if (!_db) {
+	if (!_handle) {
 		UQLLogDebug(@"Can not append value in NULL database");
 		return;
 	}
 
 	UQLLogTrace(@"Trying to append value in database \"%@\"", self.path);
 
-	int status = unqlite_kv_append(_db, [key bytes], (int)[key length], [data bytes], [data length]);
+	int status = unqlite_kv_append(_handle, [key bytes], (int)[key length], [data bytes], [data length]);
 	while (status == UNQLITE_BUSY) {
 		[NSThread sleepForTimeInterval:20];
-		status = unqlite_kv_append(_db, [key bytes], (int)[key length], [data bytes], [data length]);
+		status = unqlite_kv_append(_handle, [key bytes], (int)[key length], [data bytes], [data length]);
 	}
 
 	if (status == UNQLITE_READ_ONLY) {
@@ -198,20 +198,20 @@ static int fetchCallback(const void *pData, unsigned int iDataLen, void *pUserDa
 {
 	NSAssert(key != nil, @"Attempt to remove nil key");
 
-	if (!_db) {
+	if (!_handle) {
 		UQLLogDebug(@"Can not remove value in NULL database");
 		return;
 	}
 
 	UQLLogTrace(@"Trying to remove value in database \"%@\"", self.path);
 
-	int status = unqlite_kv_delete(_db, [key bytes], (int)[key length]);
+	int status = unqlite_kv_delete(_handle, [key bytes], (int)[key length]);
 	if (status == UNQLITE_NOTFOUND) {
 		return;
 	}
 	while (status == UNQLITE_BUSY) {
 		[NSThread sleepForTimeInterval:20];
-		status = unqlite_kv_delete(_db, [key bytes], (int)[key length]);
+		status = unqlite_kv_delete(_handle, [key bytes], (int)[key length]);
 	}
 
 	if (status == UNQLITE_READ_ONLY) {

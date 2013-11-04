@@ -24,7 +24,7 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 
 - (id)configForKey:(NSString *)key
 {
-	if (!_db) {
+	if (!_handle) {
 		UQLLogDebug(@"Can not get configuration for NULL database");
 		return nil;
 	}
@@ -33,7 +33,7 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 		const char *zPtr = NULL;
 		int nLen = 0;
 
-		int status = unqlite_config(_db, UNQLITE_CONFIG_ERR_LOG, &zPtr, &nLen);
+		int status = unqlite_config(_handle, UNQLITE_CONFIG_ERR_LOG, &zPtr, &nLen);
 		NSAssert(status == UNQLITE_OK, @"unqlite_config with UNQLITE_CONFIG_ERR_LOG command can not return error");
 
 		NSString *result = [[NSString alloc] initWithBytes:zPtr length:nLen encoding:NSUTF8StringEncoding];
@@ -44,7 +44,7 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 		const char *zPtr = NULL;
 		int nLen = 0;
 
-		int status = unqlite_config(_db, UNQLITE_CONFIG_JX9_ERR_LOG, &zPtr, &nLen);
+		int status = unqlite_config(_handle, UNQLITE_CONFIG_JX9_ERR_LOG, &zPtr, &nLen);
 		NSAssert(status == UNQLITE_OK, @"unqlite_config with UNQLITE_CONFIG_JX9_ERR_LOG command can not return error");
 
 		NSString *result = [[NSString alloc] initWithBytes:zPtr length:nLen encoding:NSUTF8StringEncoding];
@@ -53,7 +53,7 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 
 	if ([key isEqualToString:UQLConfigKeyValueStorageEngineKey]) {
 		const char *keyValueStorageEngine = NULL;
-		int status = unqlite_config(_db, UNQLITE_CONFIG_GET_KV_NAME, &keyValueStorageEngine);
+		int status = unqlite_config(_handle, UNQLITE_CONFIG_GET_KV_NAME, &keyValueStorageEngine);
 		NSAssert(status == UNQLITE_OK, @"unqlite_config with UNQLITE_CONFIG_GET_KV_NAME command can not return error");
 		
 		NSString *result = [[NSString alloc] initWithCString:keyValueStorageEngine encoding:NSUTF8StringEncoding];
@@ -65,7 +65,7 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 
 - (void)setConfig:(id)config forKey:(NSString *)key
 {
-	if (!_db) {
+	if (!_handle) {
 		UQLLogDebug(@"Can not set configuration for NULL database");
 		return;
 	}
@@ -75,7 +75,7 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 		UQLLogDebug(@"Switch to another Key/Value storage engine is unimplemented yet");
 	}
 	if ([key isEqualToString:UQLConfigDisableAutoCommitKey]) {
-		int status = unqlite_config(_db, UNQLITE_CONFIG_DISABLE_AUTO_COMMIT);
+		int status = unqlite_config(_handle, UNQLITE_CONFIG_DISABLE_AUTO_COMMIT);
 		NSAssert(status == UNQLITE_OK, @"unqlite_config with UNQLITE_CONFIG_DISABLE_AUTO_COMMIT command can not return error");
 	}
 	if ([key isEqualToString:UQLConfigMaxPageCacheKey]) {
@@ -85,7 +85,7 @@ NSString *const UQLConfigJx9ErrorLogKey = @"UQLConfigJx9ErrorLogKey";
 		int maxPage = [value intValue];
 		NSAssert(maxPage > 0, @"Value for %@ must be great or equal to 0", UQLConfigMaxPageCacheKey);
 
-		int status = unqlite_config(_db, UNQLITE_CONFIG_MAX_PAGE_CACHE, maxPage);
+		int status = unqlite_config(_handle, UNQLITE_CONFIG_MAX_PAGE_CACHE, maxPage);
 		NSError *error = UQLErrorForStatusCode(status);
 		if (error) {
 			UQLLogWarning(@"unqlite_config can not set UNQLITE_CONFIG_MAX_PAGE_CACHE to value %d for database \"%@\"", maxPage, self.path);

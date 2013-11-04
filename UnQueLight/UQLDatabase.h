@@ -27,7 +27,7 @@ typedef NS_OPTIONS(NSUInteger, UQLOpenOptions) {
 
 @interface UQLDatabase : NSObject
 {
-	unqlite *_db;
+	unqlite *_handle;
 }
 
 @property (nonatomic, copy, readonly) NSString *path;

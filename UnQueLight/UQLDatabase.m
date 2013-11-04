@@ -68,14 +68,14 @@
 
 - (BOOL)openWithOptions:(UQLOpenOptions)options error:(NSError **)error
 {
-	if (_db) {
+	if (_handle) {
 		return YES;
 	}
 
 	UQLLogTrace(@"Trying to open database \"%@\"", self.path);
 
 	const char *path = [self unqlitePath];
-	int status = unqlite_open(&_db, path, options);
+	int status = unqlite_open(&_handle, path, options);
 
 	if (status == UNQLITE_NOMEM) {
 		NSError *openError = [NSError errorWithDomain:UQLErrorDomain code:status userInfo:@{ NSLocalizedDescriptionKey: @"Out of memory" }];
@@ -93,23 +93,23 @@
 
 - (BOOL)close
 {
-	if (!_db) {
+	if (!_handle) {
 		return YES;
 	}
 
 	UQLLogTrace(@"Trying to close database \"%@\"", self.path);
 
-	int status = unqlite_close(_db);
+	int status = unqlite_close(_handle);
 	while (status == UNQLITE_BUSY) {
 		[NSThread sleepForTimeInterval:20];
-		status = unqlite_close(_db);
+		status = unqlite_close(_handle);
 	}
 
 	if (status == UNQLITE_ABORT) {
 		NSError *error = [NSError errorWithDomain:UQLErrorDomain code:status userInfo:@{ NSLocalizedDescriptionKey: @"Another thread have released the database handle" }];
 		UQLLogError(@"Database \"%@\" already closed in another thread. Error returned %@", self.path, error);
 
-		_db = NULL;
+		_handle = NULL;
 
 		return YES;
 	}
@@ -117,7 +117,7 @@
 		NSError *error = [NSError errorWithDomain:UQLErrorDomain code:status userInfo:@{ NSLocalizedDescriptionKey: @"OS specific error" }];
 		UQLLogError(@"Can not close database \"%@\" properly. Error returned %@", self.path, error);
 
-		_db = NULL;
+		_handle = NULL;
 
 		return YES;
 	}
@@ -125,7 +125,7 @@
 	if (status == UNQLITE_OK) {
 		UQLLogTrace(@"Successful closed database \"%@\"", self.path);
 
-		_db = NULL;
+		_handle = NULL;
 
 		return YES;
 	}
@@ -135,7 +135,7 @@
 
 - (BOOL)isOpen
 {
-	BOOL result = _db != NULL;
+	BOOL result = _handle != NULL;
 	return result;
 }
 
@@ -144,7 +144,7 @@
 
 - (unqlite *)unqliteHandle
 {
-	return _db;
+	return _handle;
 }
 
 - (const char *)unqlitePath
