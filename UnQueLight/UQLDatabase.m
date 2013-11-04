@@ -32,7 +32,7 @@
 #pragma mark -
 #pragma mark Init / Dealloc
 
-- (id)init
+- (instancetype)init
 {
 	self = [super init];
 	if (!self) {
@@ -46,7 +46,7 @@
 	return self;
 }
 
-- (id)initWithPath:(NSString *)path
+- (instancetype)initWithPath:(NSString *)path
 {
 	self = [super init];
 	if (!self) {
@@ -147,7 +147,7 @@
 #pragma mark -
 #pragma mark Low-level methods
 
-- (id)initWithHandle:(unqlite *)handle path:(const char *)path releaseWhenDone:(BOOL)releaseWhenDone
+- (instancetype)initWithHandle:(unqlite *)handle path:(const char *)path releaseWhenDone:(BOOL)releaseWhenDone
 {
 	if (!handle) {
 		return nil;

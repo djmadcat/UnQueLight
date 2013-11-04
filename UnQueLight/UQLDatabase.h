@@ -37,9 +37,9 @@ typedef NS_OPTIONS(NSUInteger, UQLOpenOptions) {
 + (instancetype)databaseWithPath:(NSString *)path;
 
 // in-memory database
-- (id)init;
+- (instancetype)init;
 // if (path == nil) in-memory database will be create
-- (id)initWithPath:(NSString *)path;
+- (instancetype)initWithPath:(NSString *)path;
 
 - (BOOL)openWithOptions:(UQLOpenOptions)options error:(NSError **)error;
 - (BOOL)close;
@@ -47,7 +47,7 @@ typedef NS_OPTIONS(NSUInteger, UQLOpenOptions) {
 - (BOOL)isOpen;
 
 // low-level handle
-- (id)initWithHandle:(unqlite *)handle path:(const char *)path releaseWhenDone:(BOOL)releaseWhenDone;
+- (instancetype)initWithHandle:(unqlite *)handle path:(const char *)path releaseWhenDone:(BOOL)releaseWhenDone;
 - (unqlite *)unqliteHandle;
 - (const char *)unqlitePath;
 
