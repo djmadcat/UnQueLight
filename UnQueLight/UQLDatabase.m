@@ -152,11 +152,11 @@
 	if (!self.path) {
 		return NULL;
 	}
-	if ([self.path isEqualToString:@":mem:"]) {
-		return ":mem:";
-	}
 	if (![self.path length]) {
 		return "";
+	}
+	if ([self.path isEqualToString:@":mem:"]) {
+		return ":mem:";
 	}
 	const char *result = [self.path fileSystemRepresentation];
 
