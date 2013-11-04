@@ -28,6 +28,7 @@ typedef NS_OPTIONS(NSUInteger, UQLOpenOptions) {
 @interface UQLDatabase : NSObject
 {
 	unqlite *_handle;
+	BOOL _releaseWhenDone;
 }
 
 @property (nonatomic, copy, readonly) NSString *path;
@@ -46,6 +47,7 @@ typedef NS_OPTIONS(NSUInteger, UQLOpenOptions) {
 - (BOOL)isOpen;
 
 // low-level handle
+- (id)initWithHandle:(unqlite *)handle path:(const char *)path releaseWhenDone:(BOOL)releaseWhenDone;
 - (unqlite *)unqliteHandle;
 - (const char *)unqlitePath;
 

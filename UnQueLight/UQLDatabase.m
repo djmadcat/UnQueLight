@@ -39,6 +39,8 @@
 		return nil;
 	}
 
+	_releaseWhenDone = YES;
+
 	UQLLogTrace(@"Creating database \"%@\"", self.path);
 
 	return self;
@@ -52,6 +54,7 @@
 	}
 
 	self.path = path;
+	_releaseWhenDone = YES;
 
 	UQLLogTrace(@"Creating database \"%@\"", self.path);
 
@@ -60,7 +63,9 @@
 
 - (void)dealloc
 {
-	[self close];
+	if (_releaseWhenDone) {
+		[self close];
+	}
 }
 
 #pragma mark -
@@ -141,6 +146,26 @@
 
 #pragma mark -
 #pragma mark Low-level methods
+
+- (id)initWithHandle:(unqlite *)handle path:(const char *)path releaseWhenDone:(BOOL)releaseWhenDone
+{
+	if (!handle) {
+		return nil;
+	}
+
+	self = [super init];
+	if (!self) {
+		return nil;
+	}
+
+	_handle = handle;
+	if (path) {
+		self.path = [[NSString alloc] initWithUTF8String:path];
+	}
+	_releaseWhenDone = releaseWhenDone;
+
+	return self;
+}
 
 - (unqlite *)unqliteHandle
 {
