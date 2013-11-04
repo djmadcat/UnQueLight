@@ -188,4 +188,13 @@
 	return result;
 }
 
+#pragma mark -
+#pragma mark Description
+
+- (NSString *)description
+{
+	NSString *result = [[NSString alloc] initWithFormat:@"<%@: %p; handle = %p; path = %@>", NSStringFromClass([self class]), self, _handle, self.path ? self.path : @"nil"];
+	return result;
+}
+
 @end
